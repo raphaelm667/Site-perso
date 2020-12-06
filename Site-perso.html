@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=utf-8>
+    <title>TP10 - Site perso</title>
+	<link rel="stylesheet" type="text/css" href="css/Site-perso.css">
+    <script src="js/Site-perso.js"></script>
+  </head>
+  <body>
+  
+  
+	
+    <form id="formMenuSandwich" action=# onSubmit='return ajouterMenu(this);'>
+      <fieldset>
+        <legend>Commande de sandwich</legend>
+     
+        <label for="clientNom">Nom : </label>
+        <input id="clientNom" name="nom" type="text" required> <br><br>
+		
+		<label for="clientPrenom">Prenom : </label>
+        <input id="clientPrenom" name="prenom" type="text" required> <br><br>
+              
+        <label for="DateCommande">Date pour la commande: </label>
+        <input id="DateCommande" name="datej" type="date" required><br><br>
+              
+        <label for="sandwich">Sandwich : </label>
+        <select id="sandwich" name="sandwichChoix">
+          <option value="Sandwich Jambon" selected>Sandwich Jambon</option>
+          <option value="Sandwich Fromage">Sandwich Fromage</option>
+          <option value="Sandwich Americain">Sandwich Americain</option>
+		  <option value="Sandwic Boulette">Sandwich Boulette</option>
+        </select><br><br>
+		
+		<label for="boisson">Boisson : </label>
+		<select id="boisson" name="boissonChoix">
+         <option value="Coca" selected>Coca</option>
+         <option value="Eau">Eau 1L</option>
+         <option value="Fanta">Fanta</option>
+		 <option value="Sprite">Sprite</option>
+        </select><br><br>
+                      
+        <input type="submit" value="Envoyer">
+        <input type="reset">
+      </fieldset>
+    </form>
+	
+	 <div>
+      <p><strong>Résultat :</strong></p>
+      <div id="menuAffichage" style="color: blue">
+      </div>
+      <br>
+    </div>        
+	
+  </body>
+</html>
