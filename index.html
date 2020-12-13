@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="css/Site-perso.css">
     <script src="js/Site-perso.js"></script>
   </head>
-  <body>
+  <body onload="initialiserPage();">
   
   
 	
@@ -15,10 +15,10 @@
         <legend>Commande de sandwich</legend>
      
         <label for="clientNom">Nom : </label>
-        <input id="clientNom" name="nom" type="text" required> <br><br>
+        <input id="clientNom" name="nom" type="text" value="Nom" onFocus="this.value='';" required> <br><br>
 		
 		<label for="clientPrenom">Prenom : </label>
-        <input id="clientPrenom" name="prenom" type="text" required> <br><br>
+        <input id="clientPrenom" name="prenom" type="text" value="Prenom" onFocus="this.value='';" required> <br><br>
               
         <label for="DateCommande">Date pour la commande: </label>
         <input id="DateCommande" name="datej" type="date" required><br><br>
@@ -45,8 +45,8 @@
     </form>
 	
 	 <div>
-      <p><strong>Résultat :</strong></p>
-      <div id="menuAffichage" style="color: blue">
+      <p id="titre"><strong>Tableau Récapitulatif Des Commandes:</strong></p>
+      <div id="menuAffichage">
       </div>
       <br>
     </div>        

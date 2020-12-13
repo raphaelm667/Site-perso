@@ -10,3 +10,27 @@ legend {
     color: #fff;
     padding: 3px 6px;
 }
+
+table,tr,td,th{
+	border:1px solid black;
+	text-align:center
+}
+
+table{
+	margin:2%;
+	width:46%;
+	border-spacing:0;
+}
+
+#titre{
+	text-decoration: underline;
+}
+
+body{
+	background-image: url(../img/fond.jpg);
+	color:white;
+}
+
+fieldset{
+	background-color:gray;
+}
