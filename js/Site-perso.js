@@ -3,6 +3,7 @@
 let compteurMenu = 1;
 let menus = [];
 let tableauBoissonPrix = [{Coca:3,Sprite:2,Fanta:2,Eau:1}];
+let tableauSandwichImage = [{"Sandwich Jambon":"<a href='img/jambon.jpg' target='_blank'>","Sandwich Fromage":"<a href='img/fromage.jpg' target='_blank'>","Sandwich Americain":"<a href='img/americain.jpg' target='_blank'>","Sandwic Boulette":"<a href='img/boulette.jpg' target='_blank'>"}];
 let i= 0;
 
 /**
@@ -34,8 +35,18 @@ function ajouterMenu(x)
 function creeTableau()
 {
 	let temp="";
+	let tempImage="";
 	for(let y=0;y<menus.length;y++){
-		temp += "<tr><td>N°"+menus[y]["Numero"]+"</td><td>"+menus[y]["Nom"]+"</td><td>"+menus[y]["Date"].toLocaleString('fr-BE')+"</td><td><a href='img/jambon.jpg' target='_blank'>"+menus[y]["Sandwich"]+"</a></td><td>"+menus[y]["Boisson"]+"</td>";
+		
+		for(let j of tableauSandwichImage){
+			let z=Object.keys(j);
+			for(let h=0;h<z.length;h++){
+				if(menus[y]["Sandwich"]==z[h]){
+				tempImage=tableauSandwichImage[0][z[h]];
+				}
+			}
+		}
+		temp += "<tr><td>N°"+menus[y]["Numero"]+"</td><td>"+menus[y]["Nom"]+"</td><td>"+menus[y]["Date"].toLocaleString('fr-BE')+"</td><td>"+tempImage+""+menus[y]["Sandwich"]+"</a></td><td>"+menus[y]["Boisson"]+"</td>";
 		temp += "<td><input id='calc' name='champCalc' type='button' value='Calcul' onclick='calcul("+y+");'> </td>"
 		temp += "<td id='affichageCalcule"+y+"'></td></tr>";
 		document.getElementById("remplir").innerHTML = temp;
