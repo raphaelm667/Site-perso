@@ -2,6 +2,7 @@
 
 let compteurMenu = 1;
 let menus = [];
+let tableauBoissonPrix = [{Coca:3,Sprite:2,Fanta:2,Eau:1}];
 let i= 0;
 
 /**
@@ -13,7 +14,6 @@ let i= 0;
 
 function ajouterMenu(x)
 {
-	let temp="";
 	let menu = {
 		Numero :compteurMenu,
 		Nom: x.clientNom.value,
@@ -22,17 +22,24 @@ function ajouterMenu(x)
 		Sandwich: x.sandwich.value,
 		Boisson: x.boisson.value
 		};
+		
 	compteurMenu++;
 	menus[i] = menu;
 	menus.sort(ordoner);
 	i++;
-	for(let y=0;y<menus.length;y++){
-	temp += "<tr><td>N°"+menus[y]["Numero"]+"</td><td>"+menus[y]["Nom"]+"</td><td>"+menus[y]["Date"].toLocaleString('fr-BE')+"</td><td><a href='img/jambon.jpg' target='_blank'>"+menus[y]["Sandwich"]+"</a></td><td>"+menus[y]["Boisson"]+"</td>";
-	temp += "<td><input id='calc' name='champCalc' type='button' value='Calcul' onclick='calcul(0);'> </td>"
-	temp += "<td>"+calcul(y)+"</td></tr>";
-	document.getElementById("remplir").innerHTML = temp;
-	}
+	creeTableau();
 	return false;
+}
+
+function creeTableau()
+{
+	let temp="";
+	for(let y=0;y<menus.length;y++){
+		temp += "<tr><td>N°"+menus[y]["Numero"]+"</td><td>"+menus[y]["Nom"]+"</td><td>"+menus[y]["Date"].toLocaleString('fr-BE')+"</td><td><a href='img/jambon.jpg' target='_blank'>"+menus[y]["Sandwich"]+"</a></td><td>"+menus[y]["Boisson"]+"</td>";
+		temp += "<td><input id='calc' name='champCalc' type='button' value='Calcul' onclick='calcul("+y+");'> </td>"
+		temp += "<td id='affichageCalcule"+y+"'></td></tr>";
+		document.getElementById("remplir").innerHTML = temp;
+	}
 }
 
 /**
@@ -48,13 +55,17 @@ function  initialiserPage(){
 function calcul(x)
 {
 	let prix=2;
-	if(menus[x]["Boisson"] == "Coca"){
-		prix+=3;
+	for(let y of tableauBoissonPrix)
+	{
+		let z=Object.keys(y);
+		for(let h=0;h<z.length;h++){
+			if(menus[x]["Boisson"] == z[h])
+			{
+			prix+=tableauBoissonPrix[0][z[h]];
+			}
+		}
 	}
-	else if(menus[x]["Boisson"] == "Sprite"){prix+=2;}
-	else if(menus[x]["Boisson"] == "Fanta"){prix+=2;}
-	else{prix+=1;}
-	return prix+"€"
+	document.getElementById("affichageCalcule"+x+"").innerHTML = prix+"€";
 }
 
 function ordoner(x,y)
